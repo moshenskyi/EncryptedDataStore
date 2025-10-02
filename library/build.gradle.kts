@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
 }
 
 android {
@@ -48,5 +49,17 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.robolectric)
     testImplementation(libs.mockk)
+}
 
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "io.github.moshenskyi"
+            artifactId = "eds"
+            version = "0.1.0"
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }
