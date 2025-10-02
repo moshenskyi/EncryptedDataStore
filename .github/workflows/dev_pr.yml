@@ -34,4 +34,4 @@ jobs:
           script: ./gradlew :library:connectedAndroidTest
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew :library:build
